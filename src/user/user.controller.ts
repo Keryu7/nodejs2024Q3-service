@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   Param,
   Post,
   Put,
@@ -40,8 +41,8 @@ export class UserController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   async deleteUser(@Param() params: UuidParamDto) {
-    this.userService.remove(params.id);
-    return { statusCode: 204, message: 'User deleted' };
+    return this.userService.remove(params.id);
   }
 }
