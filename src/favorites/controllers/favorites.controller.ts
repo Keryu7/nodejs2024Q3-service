@@ -8,11 +8,11 @@ import {
   HttpStatus,
   UnprocessableEntityException,
 } from '@nestjs/common';
-import { FavoritesService } from './favorites.service';
-import { TrackService } from 'src/track/track.service';
-import { AlbumService } from 'src/album/album.service';
-import { ArtistService } from 'src/artist/artist.service';
-import { UuidParamDto } from '../dto/uuid-param.dto';
+import { FavoritesService } from '../services/favorites.service';
+import { TrackService } from 'src/track/services/track.service';
+import { AlbumService } from 'src/album/services/album.service';
+import { ArtistService } from 'src/artist/services/artist.service';
+import { UuidParamDto } from '../../dto/uuid-param.dto';
 
 @Controller('favs')
 export class FavoritesController {

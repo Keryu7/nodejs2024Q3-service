@@ -9,10 +9,10 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { AlbumService } from './album.service';
-import { CreateAlbumDto } from './dto/create-album.dto';
-import { UpdateAlbumDto } from './dto/update-album.dto';
-import { UuidParamDto } from '../dto/uuid-param.dto';
+import { AlbumService } from '../services/album.service';
+import { CreateAlbumDto } from '../dto/create-album.dto';
+import { UpdateAlbumDto } from '../dto/update-album.dto';
+import { UuidParamDto } from '../../dto/uuid-param.dto';
 
 @Controller('album')
 export class AlbumController {

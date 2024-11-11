@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Track } from './interfaces/track.interface';
-import { CreateTrackDto } from './dto/create-track.dto';
-import { UpdateTrackDto } from './dto/update-track.dto';
-import { FavoritesService } from '../favorites/favorites.service';
+import { Track } from '../interfaces/track.interface';
+import { CreateTrackDto } from '../dto/create-track.dto';
+import { UpdateTrackDto } from '../dto/update-track.dto';
+import { FavoritesService } from '../../favorites/services/favorites.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()

@@ -6,7 +6,7 @@ import {
 import { Artist } from 'src/artist/interfaces/artist.interface';
 import { Album } from 'src/album/interfaces/album.interface';
 import { Track } from 'src/track/interfaces/track.interface';
-import { Favorites } from './interfaces/favotites.interface';
+import { Favorites } from '../interfaces/favotites.interface';
 
 @Injectable()
 export class FavoritesService {
