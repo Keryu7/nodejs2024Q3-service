@@ -4,6 +4,7 @@ import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { TrackService } from '../track/track.service';
 import { AlbumService } from '../album/album.service';
+import { FavoritesService } from '../favorites/favorites.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
@@ -12,15 +13,16 @@ export class ArtistService {
   constructor(
     private readonly trackService: TrackService,
     private readonly albumService: AlbumService,
+    private readonly favoritesService: FavoritesService,
   ) {}
 
   findAll(): Artist[] {
     return this.artists;
   }
 
-  findById(id: string): Artist {
+  findById(id: string, showError = true): Artist {
     const artist = this.artists.find((artist) => artist.id === id);
-    if (!artist) throw new NotFoundException('Artist not found');
+    if (!artist && showError) throw new NotFoundException('Artist not found');
     return artist;
   }
 
@@ -46,6 +48,7 @@ export class ArtistService {
 
     this.trackService.removeArtistFromTracks(id);
     this.albumService.removeArtistFromAlbums(id);
+    this.favoritesService.removeArtistIfFavorite(id);
     this.artists.splice(artistIndex, 1);
   }
 }
