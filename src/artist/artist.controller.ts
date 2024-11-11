@@ -7,6 +7,7 @@ import {
   Param,
   Body,
   HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { ArtistService } from './artist.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
@@ -28,18 +29,21 @@ export class ArtistController {
   }
 
   @Post()
-  @HttpCode(201)
+  @HttpCode(HttpStatus.CREATED)
   createArtist(@Body() createArtistDto: CreateArtistDto) {
     return this.artistService.create(createArtistDto);
   }
 
   @Put(':id')
-  updateArtist(@Param() params: UuidParamDto, @Body() updateArtistDto: UpdateArtistDto) {
+  updateArtist(
+    @Param() params: UuidParamDto,
+    @Body() updateArtistDto: UpdateArtistDto,
+  ) {
     return this.artistService.update(params.id, updateArtistDto);
   }
 
   @Delete(':id')
-  @HttpCode(204)
+  @HttpCode(HttpStatus.NO_CONTENT)
   deleteArtist(@Param() params: UuidParamDto) {
     this.artistService.remove(params.id);
   }

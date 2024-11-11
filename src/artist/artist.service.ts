@@ -3,12 +3,16 @@ import { Artist } from './interfaces/artist.interface';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { TrackService } from '../track/track.service';
+import { AlbumService } from '../album/album.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ArtistService {
   private artists: Artist[] = [];
-  constructor(private readonly trackService: TrackService) {}
+  constructor(
+    private readonly trackService: TrackService,
+    private readonly albumService: AlbumService,
+  ) {}
 
   findAll(): Artist[] {
     return this.artists;
@@ -41,6 +45,7 @@ export class ArtistService {
     if (artistIndex === -1) throw new NotFoundException('Artist not found');
 
     this.trackService.removeArtistFromTracks(id);
+    this.albumService.removeArtistFromAlbums(id);
     this.artists.splice(artistIndex, 1);
   }
 }

@@ -47,4 +47,12 @@ export class TrackService {
       }
     });
   }
+
+  removeAlbumFromTracks(albumId: string): void {
+    this.tracks.forEach((track) => {
+      if (track.albumId === albumId) {
+        track.albumId = null;
+      }
+    });
+  }
 }
