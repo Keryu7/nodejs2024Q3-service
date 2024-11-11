@@ -39,4 +39,12 @@ export class TrackService {
     if (trackIndex === -1) throw new NotFoundException('Track not found');
     this.tracks.splice(trackIndex, 1);
   }
+
+  removeArtistFromTracks(artistId: string): void {
+    this.tracks.forEach((track) => {
+      if (track.artistId === artistId) {
+        track.artistId = null;
+      }
+    });
+  }
 }
